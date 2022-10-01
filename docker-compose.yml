@@ -2,12 +2,13 @@ version: "3.4"
 
 services:
   ifconfig:
-    image: ifconfig.io:latest
+    image: ip123.top:latest
+    #image: georgyo/ifconfig.io:latest
     build:
       context: ./
       target: production
     ports:
-      - ${PORT:-8080}:8080
+      - ${PORT:-80}:80
     environment:
       TLS: ${TLS:-0}
       HOSTNAME: ${HOSTNAME}

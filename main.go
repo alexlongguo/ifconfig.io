@@ -29,10 +29,10 @@ type Configuration struct {
 var configuration = Configuration{}
 
 func init() {
-	hostname := getEnvWithDefault("HOSTNAME", "ifconfig.io")
+	hostname := getEnvWithDefault("HOSTNAME", "ip123.top")
 
 	host := getEnvWithDefault("HOST", "")
-	port := getEnvWithDefault("PORT", "8080")
+	port := getEnvWithDefault("PORT", "80")
 	proxy_listener := getEnvWithDefault("PROXY_PROTOCOL_ADDR", "")
 
 	// Most common alternative would be X-Forwarded-For
@@ -105,7 +105,7 @@ func mainHandler(c *gin.Context) {
 	//	return
 	//}
 
-	c.Set("ifconfig_hostname", configuration.hostname)
+	c.Set("ip123top_hostname", configuration.hostname)
 
 	ua := c.Request.UserAgent()
 
@@ -140,7 +140,7 @@ func mainHandler(c *gin.Context) {
 		if isReqFromCmdLine(ua) {
 			c.String(200, fmt.Sprintln(ip.IP))
 		} else {
-			c.HTML(200, "index.html", c.Keys)
+			c.HTML(200, "index_cn.html", c.Keys)
 		}
 		return
 	case "request":
@@ -152,7 +152,7 @@ func mainHandler(c *gin.Context) {
 		} else if wantsJS {
 			c.Writer.Header().Set("Content-Type", "application/javascript")
 			response, _ := json.Marshal(c.Keys)
-			c.String(200, "ifconfig_io = %v\n", string(response))
+			c.String(200, "ip123_top = %v\n", string(response))
 		} else {
 			c.Writer.Header().Set("Content-Type", "text/plain; charset=utf-8")
 			c.YAML(200, c.Keys)
@@ -162,7 +162,7 @@ func mainHandler(c *gin.Context) {
 		if wantsJS {
 			c.Writer.Header().Set("Content-Type", "application/javascript")
 			response, _ := json.Marshal(c.Request.Header)
-			c.String(200, "ifconfig_io = %v\n", string(response))
+			c.String(200, "ip123_top = %v\n", string(response))
 		} else {
 			c.JSON(200, c.Request.Header)
 		}
