@@ -9,6 +9,7 @@ services:
       target: production
     ports:
       - ${PORT:-80}:80
+      - ${TSLPORT:-443}:443
     environment:
-      TLS: ${TLS:-0}
+      TLS: ${TLS:-1}
       HOSTNAME: ${HOSTNAME}

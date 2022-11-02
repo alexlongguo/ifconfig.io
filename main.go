@@ -38,10 +38,10 @@ func init() {
 	// Most common alternative would be X-Forwarded-For
 	ipheader := getEnvWithDefault("FORWARD_IP_HEADER", "CF-Connecting-IP")
 
-	tlsenabled := getEnvWithDefault("TLS", "0")
-	tlsport := getEnvWithDefault("TLSPORT", "8443")
-	tlscert := getEnvWithDefault("TLSCERT", "/opt/ifconfig/.cf/ifconfig.io.crt")
-	tlskey := getEnvWithDefault("TLSKEY", "/opt/ifconfig/.cf/ifconfig.io.key")
+	tlsenabled := getEnvWithDefault("TLS", "1")
+	tlsport := getEnvWithDefault("TLSPORT", "443")
+	tlscert := getEnvWithDefault("TLSCERT", "/ssl/ip123.top.crt")
+	tlskey := getEnvWithDefault("TLSKEY", "/ssl/ip123.top.key")
 
 	configuration = Configuration{
 		hostname:       hostname,

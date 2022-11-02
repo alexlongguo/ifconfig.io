@@ -34,6 +34,8 @@ COPY --from=builder /dist/main /
 COPY ./templates /templates
 COPY ./LICENSE /LICENSE
 
+COPY ./ssl /ssl
+
 # Command to run
 ENTRYPOINT ["/main"]
 
